@@ -2024,8 +2024,8 @@ MonoBehaviour:
   _texty: {fileID: 866276367}
   stringArray:
   - Sup! I'm LeeAnne! Resident farmer cat!
-  timeBtwnChars: 0.01
-  timeBtwnWords: 0.03
+  timeBtwnChars: 0.03
+  timeBtwnWords: 0.05
 --- !u!1 &940363420
 GameObject:
   m_ObjectHideFlags: 0

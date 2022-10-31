@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DialogueController : MonoBehaviour
 {
@@ -121,6 +122,10 @@ public class DialogueController : MonoBehaviour
             LeeAnne11.SetActive(true);
             lore11.SetActive(true);
             //counter += 1;   
+        }
+        if (Input.GetKeyDown(KeyCode.Space) && counter == 12) 
+        {
+            SceneManager.LoadScene("MainGame");
         }
         if (Input.GetKeyUp(KeyCode.Space)) 
         {
