@@ -5,25 +5,110 @@ using UnityEngine.SceneManagement;
 
 public class PHGameScript : MonoBehaviour
 {
+    //this is the seconds for the timer in FixedUpdate
     private float timer = 2;
+    
+    //these 3 local variables need to be set at the start of every game
     int lives;
     int score;
     int cat;
+    //these ^
 
-    //these local variables need to be set at the start of every game
+    int variation;
+    [SerializeField] GameObject inst1;
+    [SerializeField] GameObject inst2;
+    [SerializeField] GameObject inst3;
+    [SerializeField] GameObject inst4;
+    [SerializeField] GameObject instShift;
+    [SerializeField] GameObject SgagR;
+    [SerializeField] GameObject LcatR;
+    [SerializeField] GameObject SgagL;
+    [SerializeField] GameObject LcatL;
+
     void Start() 
     {
         lives = PlayerPrefs.GetInt("lives");
         score = PlayerPrefs.GetInt("score");
         cat = PlayerPrefs.GetInt("cat");
 
+        variation = Random.Range(1,7);
+
+        if(variation == 1)
+        {
+            inst1.SetActive(true);
+        }
+        if(variation == 2)
+        {
+            inst2.SetActive(true);
+        }
+        if(variation == 3)
+        {
+            inst3.SetActive(true);
+        }
+        if(variation == 4)
+        {
+            inst4.SetActive(true);
+        }
+        if(variation == 5)
+        {
+            instShift.SetActive(true);
+            SgagR.SetActive(true);
+            LcatR.SetActive(true);
+        }
+        if(variation == 6)
+        {
+            instShift.SetActive(true);
+            SgagL.SetActive(true);
+            LcatL.SetActive(true);
+        }
+
     }
 
-    //this is the actual "game" in this case it is just to press space so when you do, you win, and that is the code for what winning does
+    //this is the actual "game" in this case it is just to press s certain key so when you do, you win, and that is the code for what winning does
     //this will obviously be bigger and more complex for other games, but that code has to be there before leaving to the main game
     void Update() 
     {
-        if(Input.GetKeyDown(KeyCode.Space)) 
+        if(Input.GetKeyDown(KeyCode.Space) && variation == 1) 
+        {
+            score += 5;
+            cat = 2;
+            PlayerPrefs.SetInt("score", score);
+            PlayerPrefs.SetInt("cat", cat);
+            SceneManager.LoadScene("MainGame");
+        }
+        if(Input.GetKeyDown(KeyCode.Tab) && variation == 2) 
+        {
+            score += 5;
+            cat = 2;
+            PlayerPrefs.SetInt("score", score);
+            PlayerPrefs.SetInt("cat", cat);
+            SceneManager.LoadScene("MainGame");
+        }
+        if(Input.GetKeyDown(KeyCode.P) && variation == 3) 
+        {
+            score += 5;
+            cat = 2;
+            PlayerPrefs.SetInt("score", score);
+            PlayerPrefs.SetInt("cat", cat);
+            SceneManager.LoadScene("MainGame");
+        }
+        if(Input.GetKeyDown(KeyCode.Y) && variation == 4) 
+        {
+            score += 5;
+            cat = 2;
+            PlayerPrefs.SetInt("score", score);
+            PlayerPrefs.SetInt("cat", cat);
+            SceneManager.LoadScene("MainGame");
+        }
+        if(Input.GetKeyDown(KeyCode.RightShift) && variation == 5) 
+        {
+            score += 5;
+            cat = 2;
+            PlayerPrefs.SetInt("score", score);
+            PlayerPrefs.SetInt("cat", cat);
+            SceneManager.LoadScene("MainGame");
+        }
+        if(Input.GetKeyDown(KeyCode.LeftShift) && variation == 6) 
         {
             score += 5;
             cat = 2;

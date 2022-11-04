@@ -15,7 +15,7 @@ public class ShipBullets : MonoBehaviour
     void Update()
     {
 
-         transform.Translate(Vector2.up * 0.02f);
+         transform.Translate(Vector2.up * 0.06f);
        
     }
 

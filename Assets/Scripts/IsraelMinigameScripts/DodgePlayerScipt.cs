@@ -16,7 +16,7 @@ public class DodgePlayerScipt : MonoBehaviour
         if (collider.gameObject.tag == "DodgeEnemy")
         {
             mainscript.GetComponent<DodgeGame>().hit();
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
