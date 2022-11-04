@@ -32,4 +32,9 @@ public class MenuButtons : MonoBehaviour
         PlayerPrefs.SetInt("cat", 0);
         SceneManager.LoadScene("IntroScene");
    }
+   
+   public void Restart()
+   {
+     SceneManager.LoadScene("MainMenu");
+   }
 }

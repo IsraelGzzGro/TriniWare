@@ -3,34 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DodgeGame : MonoBehaviour
+public class PlayerShipBehavior : MonoBehaviour
 {
-     private float timer = 6;
+    public GameObject projectile;
+    int counter = 0;
+    private float timer = 10;
     int lives;
     int score;
     int cat;
-    public GameObject player;
-    bool gothit = false;
+    bool hitenemy = false;
+    
     void Start()
     {
         lives = PlayerPrefs.GetInt("lives");
         score = PlayerPrefs.GetInt("score");
         cat = PlayerPrefs.GetInt("cat");
     }
-
-    public void hit() 
-    {
-        gothit = true;
-    }
-
+    
     void Update()
     {
-        player.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        player.transform.position = new Vector3(player.transform.position.x, 
-            player.transform.position.y, 0);
+        if (Input.GetKeyDown("space") && counter == 0)
+        {
+            shootBullet();
+            counter++;
+        }
     }
 
-    void FixedUpdate()
+    void FixedUpdate() 
     {
         if (timer > 0)
         {
@@ -38,7 +37,7 @@ public class DodgeGame : MonoBehaviour
 
             if (timer <= 0)
             {
-                if(gothit == true) 
+                if(hitenemy == false) 
                 {
                     lives -= 1;
                     cat = 1;
@@ -53,8 +52,18 @@ public class DodgeGame : MonoBehaviour
                     PlayerPrefs.SetInt("cat", cat);
                     SceneManager.LoadScene("MainGame");
                 }
-                
             }
         }
+    }
+
+    public void hitsEnemy()
+    {
+        timer = 2;
+        hitenemy = true;
+    }
+
+    void shootBullet()
+    {
+        Instantiate(projectile, transform.position, Quaternion.identity);
     }
 }

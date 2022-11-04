@@ -5,17 +5,12 @@ using UnityEngine.UI;
 
 public class EnemyShipBehavior : MonoBehaviour
 {
-    public Text tt;
-    private int counter = 0;
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
+    //public Text tt;
+    //private int counter = 0;
+    public GameObject player;
     void Update()
     {
-        counter++;
+       /* counter++;
         if (counter >= 50)
         {  
             Destroy(tt);
@@ -24,14 +19,16 @@ public class EnemyShipBehavior : MonoBehaviour
         if(counter >= 60)
         {   
            counter = 60;
-           transform.Translate(Vector2.right * 0.2f);
-        }
+           transform.Translate(Vector2.right * 0.002f);
+        }*/
+
     }
 
     void OnTriggerEnter2D (Collider2D collider)
     {
         if (collider.gameObject.CompareTag("Bullet"))
         {
+            player.GetComponent<PlayerShipBehavior>().hitsEnemy();
             Destroy(GameObject.Find("PlayerBullets(Clone)"));
         }
     }

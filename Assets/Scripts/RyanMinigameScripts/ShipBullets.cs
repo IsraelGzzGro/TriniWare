@@ -24,7 +24,7 @@ public class ShipBullets : MonoBehaviour
         if (collider.gameObject.CompareTag("Enemy"))
         {
             Destroy(GameObject.Find("Enemy"));
-            Application.Quit();
+            //Application.Quit();
         }
     }
 }
