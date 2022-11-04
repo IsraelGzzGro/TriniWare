@@ -6,6 +6,8 @@ TagManager:
   tags:
   - DodgePlayer
   - DodgeEnemy
+  - Enemy
+  - Bullet
   layers:
   - Default
   - TransparentFX
