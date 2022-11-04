@@ -18,11 +18,18 @@ public class MenuButtons : MonoBehaviour
 
    public void Nstory() 
    {
+        PlayerPrefs.SetInt("lives", 3);
+        PlayerPrefs.SetInt("score", 0);
+        PlayerPrefs.SetInt("cat", 0);
         SceneManager.LoadScene("MainGame");
+
    }
 
    public void Story() 
    {
+        PlayerPrefs.SetInt("lives", 3);
+        PlayerPrefs.SetInt("score", 0);
+        PlayerPrefs.SetInt("cat", 0);
         SceneManager.LoadScene("IntroScene");
    }
 }
