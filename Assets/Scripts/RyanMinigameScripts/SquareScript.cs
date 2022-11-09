@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SquareScript : MonoBehaviour
 {
+    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +21,9 @@ public class SquareScript : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Bullet"))
         {
-            Destroy(GameObject.Find("PlayerBullets"));
+            Destroy(GameObject.Find("PlayerBullets(Clone)"));
+            player.GetComponent<PlayerShipBehavior>().bulletOOB();
         }
     }
+
 }

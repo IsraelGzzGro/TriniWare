@@ -66,4 +66,9 @@ public class PlayerShipBehavior : MonoBehaviour
     {
         Instantiate(projectile, transform.position, Quaternion.identity);
     }
+
+   public void bulletOOB()
+    {
+        timer = 2;
+    }
 }
