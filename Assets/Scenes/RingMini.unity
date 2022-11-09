@@ -490,6 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d95da219fc49b204fb03071107de71a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endtimer: 8
   mainbg: {fileID: 379258898}
   outcome: 0
   timer: 0

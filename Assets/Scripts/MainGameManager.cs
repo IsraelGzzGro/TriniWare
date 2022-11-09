@@ -8,7 +8,7 @@ public class MainGameManager : MonoBehaviour
 {
     public GameObject[] livesarr;
     public GameObject[] catfaces;
-    public static List<string> mGames = new List<string> {"PlaceholderGame", "PlaceholderGame2", "DodgeGame", "HTS"};
+    public static List<string> mGames = new List<string> {"PlaceholderGame", "PlaceholderGame2", "DodgeGame", "HTS", "RingMini"};
     int randnum;
     string holder;
     private float _delay = 3;
@@ -54,6 +54,7 @@ public class MainGameManager : MonoBehaviour
 
         if(mGames.Count <= 0) 
         {
+            mGames.Add("RingMini");
             mGames.Add("HTS");
             mGames.Add("DodgeGame");
             mGames.Add("PlaceholderGame2");

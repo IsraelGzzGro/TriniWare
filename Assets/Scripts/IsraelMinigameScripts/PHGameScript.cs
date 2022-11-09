@@ -18,7 +18,6 @@ public class PHGameScript : MonoBehaviour
     [SerializeField] GameObject inst1;
     [SerializeField] GameObject inst2;
     [SerializeField] GameObject inst3;
-    [SerializeField] GameObject inst4;
     [SerializeField] GameObject instShift;
     [SerializeField] GameObject SgagR;
     [SerializeField] GameObject LcatR;
@@ -44,10 +43,6 @@ public class PHGameScript : MonoBehaviour
         if(variation == 3)
         {
             inst3.SetActive(true);
-        }
-        if(variation == 4)
-        {
-            inst4.SetActive(true);
         }
         if(variation == 5)
         {
@@ -84,15 +79,7 @@ public class PHGameScript : MonoBehaviour
             PlayerPrefs.SetInt("cat", cat);
             SceneManager.LoadScene("MainGame");
         }
-        if(Input.GetKeyDown(KeyCode.P) && variation == 3) 
-        {
-            score += 5;
-            cat = 2;
-            PlayerPrefs.SetInt("score", score);
-            PlayerPrefs.SetInt("cat", cat);
-            SceneManager.LoadScene("MainGame");
-        }
-        if(Input.GetKeyDown(KeyCode.Y) && variation == 4) 
+        if(Input.GetKeyDown(KeyCode.Y) && variation == 3) 
         {
             score += 5;
             cat = 2;
