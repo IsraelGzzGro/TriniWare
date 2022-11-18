@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CircleMovementScript : MonoBehaviour
 {
@@ -31,10 +32,10 @@ public class CircleMovementScript : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D col){
-        Debug.Log(col.gameObject.name);
+        //Debug.Log(col.gameObject.name);
         GameObject e = Instantiate(explosion) as GameObject;
         e.transform.position = col.transform.position;
-        Debug.Log("Transform.position: " + col.transform.position);
+        //Debug.Log("Transform.position: " + col.transform.position);
         Destroy(col.gameObject);
         //this.gameObject.SetActive(false); //Destroy the barrier
     }

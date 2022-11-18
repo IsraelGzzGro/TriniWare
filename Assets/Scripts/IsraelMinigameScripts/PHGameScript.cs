@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PHGameScript : MonoBehaviour
 {
     //this is the seconds for the timer in FixedUpdate
-    private float timer = 2;
+    private float timer = 6;
     
     //these 3 local variables need to be set at the start of every game
     int lives;
@@ -30,32 +30,9 @@ public class PHGameScript : MonoBehaviour
         score = PlayerPrefs.GetInt("score");
         cat = PlayerPrefs.GetInt("cat");
 
-        variation = Random.Range(1,7);
+        variation = Random.Range(1,6);
 
-        if(variation == 1)
-        {
-            inst1.SetActive(true);
-        }
-        if(variation == 2)
-        {
-            inst2.SetActive(true);
-        }
-        if(variation == 3)
-        {
-            inst3.SetActive(true);
-        }
-        if(variation == 5)
-        {
-            instShift.SetActive(true);
-            SgagR.SetActive(true);
-            LcatR.SetActive(true);
-        }
-        if(variation == 6)
-        {
-            instShift.SetActive(true);
-            SgagL.SetActive(true);
-            LcatL.SetActive(true);
-        }
+        StartCoroutine(instruction());
 
     }
 
@@ -87,7 +64,7 @@ public class PHGameScript : MonoBehaviour
             PlayerPrefs.SetInt("cat", cat);
             SceneManager.LoadScene("MainGame");
         }
-        if(Input.GetKeyDown(KeyCode.RightShift) && variation == 5) 
+        if(Input.GetKeyDown(KeyCode.RightShift) && variation == 4) 
         {
             score += 5;
             cat = 2;
@@ -95,7 +72,7 @@ public class PHGameScript : MonoBehaviour
             PlayerPrefs.SetInt("cat", cat);
             SceneManager.LoadScene("MainGame");
         }
-        if(Input.GetKeyDown(KeyCode.LeftShift) && variation == 6) 
+        if(Input.GetKeyDown(KeyCode.LeftShift) && variation == 5) 
         {
             score += 5;
             cat = 2;
@@ -103,6 +80,36 @@ public class PHGameScript : MonoBehaviour
             PlayerPrefs.SetInt("cat", cat);
             SceneManager.LoadScene("MainGame");
         }
+    }
+
+    IEnumerator instruction() {
+        yield return new WaitForSeconds(3);
+        
+        if(variation == 1)
+        {
+            inst1.SetActive(true);
+        }
+        if(variation == 2)
+        {
+            inst2.SetActive(true);
+        }
+        if(variation == 3)
+        {
+            inst3.SetActive(true);
+        }
+        if(variation == 5)
+        {
+            instShift.SetActive(true);
+            SgagR.SetActive(true);
+            LcatR.SetActive(true);
+        }
+        if(variation == 6)
+        {
+            instShift.SetActive(true);
+            SgagL.SetActive(true);
+            LcatL.SetActive(true);
+        }
+        
     }
 
     //this block of code is the timer, the code under if(timer<=0) is what happens when you lose, 

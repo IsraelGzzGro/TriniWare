@@ -15,20 +15,23 @@ EditorBuildSettings:
     path: Assets/Scenes/MainGame.unity
     guid: e321bee22b15f4d6f98457cff5f1f72b
   - enabled: 1
-    path: Assets/Scenes/PlaceholderGame.unity
+    path: Assets/Scenes/FaultyPC.unity
     guid: 55da57e5212af42f8851e7ed150696ff
   - enabled: 1
     path: Assets/Scenes/PlaceholderGame2.unity
     guid: a405e9f2035654cdfab100163dda1e66
   - enabled: 1
-    path: Assets/Scenes/DodgeGame.unity
-    guid: 91f3d1af639f6462aa2bbaf0febf25cf
+    path: Assets/Scenes/MazeGame.unity
+    guid: f347c12c8e9e148aa9bc0628caee0242
   - enabled: 1
     path: Assets/Scenes/HTS.unity
     guid: d1196d8b6714d2a42858ac3f18e9e63d
   - enabled: 1
     path: Assets/Scenes/RingMini.unity
     guid: 7a7fc4f7a4d9b8140a4e18c161083a29
+  - enabled: 1
+    path: Assets/Scenes/bossgame_dpark.unity
+    guid: b3dd495e397d3491b8825ec62e01c5cb
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: e02f3c45bfe1849c1928a10a55432b61

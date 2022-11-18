@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class BunnyMovement : MonoBehaviour
 {
@@ -50,6 +49,7 @@ public class BunnyMovement : MonoBehaviour
             //Debug.Log("Transform.position: " + transform.position);
             Destroy(col.gameObject);
             alive = false;
+            (GameObject.Find("EnemySpawner")).GetComponent<RandomSpawner>().lost();
         }
         //this.gameObject.SetActive(false); //Destroy the barrier
     }
