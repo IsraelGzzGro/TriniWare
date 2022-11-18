@@ -8,20 +8,28 @@ public class MainGameManager : MonoBehaviour
 {
     public GameObject[] livesarr;
     public GameObject[] catfaces;
-    public static List<string> mGames = new List<string> {"PlaceholderGame", "PlaceholderGame2", "DodgeGame", "HTS", "RingMini"};
+    public static List<string> mGames = new List<string> {"FaultyPC", "PlaceholderGame2", "MazeGame", "HTS", "RingMini"};
     int randnum;
     string holder;
     private float _delay = 3;
     public TextMeshProUGUI scoretxt;
+    public GameObject stxt;
     int lives;
     int score;
     int cat;
+    int playingstory;
+
+    int needtoreset;
 
     void Start() 
     {
+        needtoreset = PlayerPrefs.GetInt("reset");
         lives = PlayerPrefs.GetInt("lives");
         score = PlayerPrefs.GetInt("score");
         cat = PlayerPrefs.GetInt("cat");
+        playingstory = PlayerPrefs.GetInt("PlayingStory?");
+
+        if(playingstory == 0) {stxt.SetActive(true);}
         scoretxt.text = "Score: " + score;
         if(cat == 0) 
         {
@@ -51,15 +59,25 @@ public class MainGameManager : MonoBehaviour
             livesarr[2].SetActive(false);
         }
         Debug.Log("mGames.Count = " + mGames.Count);
+        Debug.Log("needtoreset = " + needtoreset);
 
-        if(mGames.Count <= 0) 
+        if(mGames.Count == 0 && needtoreset == 0) 
+        {
+            mGames.Add("bossgame_dpark");
+            needtoreset = 1;
+            PlayerPrefs.SetInt("reset", needtoreset);
+        }
+        if(mGames.Count == 0 && needtoreset == 1) 
         {
             mGames.Add("RingMini");
             mGames.Add("HTS");
-            mGames.Add("DodgeGame");
+            mGames.Add("MazeGame");
             mGames.Add("PlaceholderGame2");
-            mGames.Add("PlaceholderGame");
-        }
+            mGames.Add("FaultyPC");
+            needtoreset = 0;
+            PlayerPrefs.SetInt("reset", needtoreset);
+        } 
+        
     }
 
     public void FixedUpdate()
