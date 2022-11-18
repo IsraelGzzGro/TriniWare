@@ -6,7 +6,7 @@ public class CircleMovementScript : MonoBehaviour
 {
     public GameObject explosion;
     private Rigidbody2D rb;
-    private float playerSpd = 25f;
+    public float playerSpd = 40f;
 
     void Start()
     {

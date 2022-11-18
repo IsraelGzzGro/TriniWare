@@ -770,8 +770,8 @@ MonoBehaviour:
   - {fileID: 1270350838299963460, guid: 904781b77f36749b58533542f6971445, type: 3}
   - {fileID: 4115251162492394818, guid: 52884d532ef9346b5abbe95a698d1b39, type: 3}
   - {fileID: 3915223501149067217, guid: 6b63b4e152be84e558ef47651b921b22, type: 3}
-  numOfEnem: 10
-  timeStart: 60
+  numOfEnem: 100
+  SpawnRate: 0.1
 --- !u!4 &1055673456
 Transform:
   m_ObjectHideFlags: 0
@@ -1273,6 +1273,10 @@ PrefabInstance:
     - target: {fileID: 1729800663565654925, guid: 7bffd4b51ad4844d5b2e422bf1a7b0d4, type: 3}
       propertyPath: bunny
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1729800663565654925, guid: 7bffd4b51ad4844d5b2e422bf1a7b0d4, type: 3}
+      propertyPath: playerSpd
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bffd4b51ad4844d5b2e422bf1a7b0d4, type: 3}
