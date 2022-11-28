@@ -711,7 +711,7 @@ GameObject:
   - component: {fileID: 2142136361841492075}
   - component: {fileID: 2142136361841492074}
   m_Layer: 0
-  m_Name: Grid 1
+  m_Name: WallGrid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
