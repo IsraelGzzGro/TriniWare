@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class basketbehavior : MonoBehaviour
 {
-    public float endtimer = 25f;
+    public float endtimer;
     public finditemsScript findscript;
     public beachitemsScript beachscript;
     public bool gameOn;
@@ -19,6 +19,16 @@ public class basketbehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (findscript.findlength == 3) {
+            endtimer = 25f;
+        }
+        else if (findscript.findlength == 2) {
+            endtimer = 15f;
+        }
+        else {
+            endtimer = 8f;
+        }
+
         gameOn = true;
 
         lives = PlayerPrefs.GetInt("lives");
@@ -38,13 +48,8 @@ public class basketbehavior : MonoBehaviour
         }
     }
 
-    IEnumerator EndMini()
-    {
-        gameEnds();
-        yield return new WaitForSeconds(2);
-    }
     void gameEnds() {
-        endtimer = 2;
+        endtimer = 1;
     }
 
     void checkGame() {
@@ -82,6 +87,7 @@ public class basketbehavior : MonoBehaviour
         }
     }
 
+    //on collision with basket, check if it is the right sprite in the find list
     private void OnCollisionEnter2D(Collision2D collision)
     {
         checkGame();
