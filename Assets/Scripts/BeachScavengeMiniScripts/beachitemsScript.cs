@@ -66,6 +66,7 @@ public class beachitemsScript : MonoBehaviour
     }
 
     void shuffle(List<int> lst, int lstlength) {
+        //shuffle numbers around based on current position in list randomly
         for (int i = 0; i < lstlength; i++)
         {
             int randomnum = Random.Range(0, lstlength);
@@ -77,7 +78,7 @@ public class beachitemsScript : MonoBehaviour
 
     void switchsprites(List<int> lst, int listnum) {
         int spritenum = lst[listnum];
-        //check whether it is water item list or sprite list, choose place accordingly
+        //check whether it is water item list  or sand item list, and make it the selected sprite
         if (watercheck) {
             switch (listnum)
             {
@@ -120,7 +121,7 @@ public class beachitemsScript : MonoBehaviour
                     break;
             }
         }
-
+        //switch to the right sprite based on number
         switch (spritenum)
         {
             case 0:
@@ -188,7 +189,7 @@ public class beachitemsScript : MonoBehaviour
                 offset = selectedObject.transform.position - mousePosition;
             }
         }
-
+        //make selected object move to current mouse position
         if (selectedObject)
         {
             selectedObject.transform.position = mousePosition + offset;

@@ -32,6 +32,8 @@ public class PHGameScript : MonoBehaviour
 
         variation = Random.Range(1,6);
 
+        Debug.Log("var = " + variation);
+
         StartCoroutine(instruction());
 
     }
@@ -97,13 +99,13 @@ public class PHGameScript : MonoBehaviour
         {
             inst3.SetActive(true);
         }
-        if(variation == 5)
+        if(variation == 4)
         {
             instShift.SetActive(true);
             SgagR.SetActive(true);
             LcatR.SetActive(true);
         }
-        if(variation == 6)
+        if(variation == 5)
         {
             instShift.SetActive(true);
             SgagL.SetActive(true);

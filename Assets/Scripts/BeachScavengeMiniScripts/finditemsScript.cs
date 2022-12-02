@@ -25,16 +25,29 @@ public class finditemsScript : MonoBehaviour
     public Sprite doll13;
     public Sprite spider14;
     public Sprite star15;
+    float totalfindnum;
+    public int findlength;
     // Start is called before the first frame update
     void Start()
     {
+        totalfindnum = Random.Range(1f,3f);
+        findlength = Mathf.RoundToInt(totalfindnum);
+
+        if (findlength == 3) {
+            //do nothing, all sprites should be enabled
+        } else if (findlength == 2) {
+            find3.enabled = false; //disable sprite renderer of finditem3
+        } else {
+            find3.enabled = false;
+            find2.enabled = false;
+        }
         //generate random numbers for sprites
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < findlength; i++) {
             float randnum = Random.Range(0f, 16f);
             findlist.Add(Mathf.RoundToInt(randnum));
         }
         //add sprites numbers to list & display in findbox
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < findlength; i++) {
             int spritenum = findlist[i];
             if (i == 0) {
                 selectedsprite = find1;

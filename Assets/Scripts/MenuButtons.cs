@@ -10,6 +10,7 @@ public class MenuButtons : MonoBehaviour
    public GameObject nostory;
    public GameObject howtplay;
    public GameObject htpwindow;
+   public Animator anim;
 
    public void playbtn() 
    {
@@ -17,6 +18,8 @@ public class MenuButtons : MonoBehaviour
         story.SetActive(true);
         nostory.SetActive(true);
         howtplay.SetActive(true);
+
+        //anim = GetComponent<Animator>();
    }
 
    public void Nstory() 
@@ -49,11 +52,19 @@ public class MenuButtons : MonoBehaviour
 
    public void Return()
    {
+     anim.SetBool("RetPressed", true);
+     StartCoroutine(waitforpanel());
+   }
+
+   IEnumerator waitforpanel() 
+   {
+     yield return new WaitForSeconds(2);
      htpwindow.SetActive(false);
    }
 
    public void Showhtp()
    {
+     anim.SetBool("RetPressed", false);
      htpwindow.SetActive(true);
    }
 
