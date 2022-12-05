@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class Fishing : MonoBehaviour
 {
 
+    int lives;
+
     [Header("Fishing Area")]
     [SerializeField] Transform topBounds;
     [SerializeField] Transform bottumBounds;
@@ -18,9 +20,9 @@ public class Fishing : MonoBehaviour
 
     [Header("Hook Settings")]
     [SerializeField] Transform hook;
-    [SerializeField] float hookSize = 0.18f;
-    [SerializeField] float hookSpeed = 0.10f;
-    [SerializeField] float hookGravity = 0.05f;
+    [SerializeField] float hookSize = 0.20f;
+    [SerializeField] float hookAcc = 0.10f;
+    [SerializeField] float g = 0.05f;     //gravity acceleration constant
     float hookPos, hookPullVelocity;
 
     [Header("Progress Bar Settings")]
@@ -52,11 +54,11 @@ public class Fishing : MonoBehaviour
 
     private void MoveHook()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow))
         {
-            hookPullVelocity += hookSpeed * Time.deltaTime;
+            hookPullVelocity += hookAcc * Time.deltaTime;
         }
-        hookPullVelocity -= hookGravity * Time.deltaTime;
+        hookPullVelocity -= g * Time.deltaTime;
 
         hookPos += hookPullVelocity;
 
@@ -88,16 +90,17 @@ public class Fishing : MonoBehaviour
         }
         else
         {
-            catchProgress -= progressBarDecay * Time.deltaTime * 5/2;
+            catchProgress -= progressBarDecay * Time.deltaTime;
             if (catchProgress <= 0) // LOSE if the bar reach the bottom
             {
-                PlayerPrefs.SetInt("lives", PlayerPrefs.GetInt("lives") - 99);
+                --lives;
+                PlayerPrefs.SetInt("lives", lives);
                 PlayerPrefs.SetInt("cat", 1);
                 SceneManager.LoadScene("MainGame");
             }
         }
 
-        if (remainTime <= 0) // WIN if player managed to keep the bar above 0 for a certain period of time
+        if (remainTime <= 0) // WIN if player managed to keep the bar above 0 for a certain amount of time
         {
             PlayerPrefs.SetInt("score", PlayerPrefs.GetInt("score") + 5);
             PlayerPrefs.SetInt("cat", 2);
@@ -109,7 +112,7 @@ public class Fishing : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        lives = PlayerPrefs.GetInt("lives");
     }
 
     // Update is called once per frame
