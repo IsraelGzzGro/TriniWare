@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuButtons : MonoBehaviour
 {
-    public GameObject pusheff;
+   public GameObject pusheff;
    public GameObject story;
    public GameObject nostory;
    public GameObject howtplay;

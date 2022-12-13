@@ -6,7 +6,7 @@ TextureImporter:
       213: 7482667652216324306
     second: Square
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -66,7 +66,10 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+<<<<<<< HEAD:Assets/Scripts/dpark_minigames/Game2/Health.png.meta
   cookieLightType: 1
+=======
+>>>>>>> 4dd6e5a483a788b849b5f579b075b89f4d87c504:Assets/Scripts/dpark_minigames/Game1/AmongUsAssets/Cafeteria-sharedassets0.assets-210.png.meta
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform

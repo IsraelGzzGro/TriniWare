@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -12,7 +13,7 @@ public class MainGameManager : MonoBehaviour
     int randnum;
     string holder;
     private float _delay = 3;
-    public TextMeshProUGUI scoretxt;
+    public Text scoretxt;
     public GameObject stxt;
     int lives;
     int score;
@@ -45,12 +46,12 @@ public class MainGameManager : MonoBehaviour
         }
         if(lives == 2) 
         {
-            livesarr[0].SetActive(false);
+            livesarr[2].SetActive(false);
         }
         if(lives == 1)
         {
-            livesarr[0].SetActive(false);
             livesarr[1].SetActive(false);
+            livesarr[2].SetActive(false);
         }
         if(lives == 0) 
         {

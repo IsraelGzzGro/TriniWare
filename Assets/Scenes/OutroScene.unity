@@ -212,7 +212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8136634522788632939, guid: 1e8185f6598d8446a8238d3a3cf332b3, type: 3}
       propertyPath: m_text
-      value: The game is done
+      value: The game will soon be done
       objectReference: {fileID: 0}
     - target: {fileID: 8136634522788632939, guid: 1e8185f6598d8446a8238d3a3cf332b3, type: 3}
       propertyPath: m_fontColor.b
