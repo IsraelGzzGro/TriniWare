@@ -22,6 +22,13 @@ public class HookMovement : MonoBehaviour
 
     private bool moveDown;
 
+    private RopeRenderer ropeRenderer;
+
+    void Awake()
+    {
+        ropeRenderer = GetComponent<RopeRenderer>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,8 +69,10 @@ public class HookMovement : MonoBehaviour
             if (temp.y >= initial_Y)
             {
                 canRot = true;
-                moveSpeed = initialMoveSpeed;
+                ropeRenderer.RenderLine(temp, false);
+                moveSpeed = initialMoveSpeed; 
             }
+            ropeRenderer.RenderLine(transform.position, true);
         }
     }
 
