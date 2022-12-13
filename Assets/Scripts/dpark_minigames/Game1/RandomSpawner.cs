@@ -17,7 +17,6 @@ public class RandomSpawner : MonoBehaviour
     private GameObject enem;
     public int numOfEnem = 10;
     public float timeStart = 60;
-    private SpriteRenderer mySpriteRenderer;
 
     // Start is called before the first frame update
     void Start()
@@ -69,14 +68,6 @@ public class RandomSpawner : MonoBehaviour
             int randEnemy = Random.Range(0, enemyPrefabs.Length);
             int randSpawnPoint = Random.Range(0, spawnPoints.Length);
             if(randSpawnPoint > 4){
-                /*mySpriteRenderer.flipX = true;
-                enem = enemyPrefabs[randEnemy];
-                enem.transform.eulerAngles = new Vector3(
-                    enem.transform.eulerAngles.x,
-                    enem.transform.eulerAngles.y + 180,
-                    enem.transform.eulerAngles.z
-                );
-                */
                 enem = enemyPrefabs[randEnemy];
                 GameObject rat = Instantiate(enem, spawnPoints[randSpawnPoint].position, transform.rotation);
                 rat.transform.localScale = new Vector3(rat.transform.localScale.x , rat.transform.localScale.y *-1, rat.transform.localScale.z);
