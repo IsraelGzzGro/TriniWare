@@ -113,7 +113,7 @@ public class MasherScript : MonoBehaviour
                     Object.Destroy(e, 2.0f);
                 }
             }
-        } else {
+        } else { //Boss has died (Condition for minigame to end)
             if(cnt == 1){
                 alive = false;
                 GameObject e = Instantiate(explosion) as GameObject;
