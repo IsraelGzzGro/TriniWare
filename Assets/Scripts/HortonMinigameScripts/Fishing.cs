@@ -22,7 +22,7 @@ public class Fishing : MonoBehaviour
     [SerializeField] Transform hook;
     [SerializeField] float hookSize = 0.20f;
     [SerializeField] float hookAcc = 0.10f;
-    [SerializeField] float g = 0.05f;     //gravity acceleration constant
+    [SerializeField] float g = 0.80f;     //gravity acceleration constant
     float hookPos, hookPullVelocity;
 
     [Header("Progress Bar Settings")]
@@ -31,7 +31,7 @@ public class Fishing : MonoBehaviour
     [SerializeField] float progressBarDecay;
     float catchProgress;
 
-    float remainTime = 10f;
+    float remainTime = 7.5f;
 
     private void FixedUpdate()
     {
