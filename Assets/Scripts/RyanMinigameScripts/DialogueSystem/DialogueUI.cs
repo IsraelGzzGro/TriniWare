@@ -27,6 +27,11 @@ public class DialogueUI : MonoBehaviour
         StartCoroutine(StepThroughDialogue(dialogueObject));
     }
 
+    public void AddResponseEvents(ResponseEvent[] responseEvents)
+    {
+        responseHandler.AddResponseEvents(responseEvents);
+    }
+
     private IEnumerator StepThroughDialogue(DialogueObject dialogueObject)
     {
 
@@ -39,7 +44,7 @@ public class DialogueUI : MonoBehaviour
             if (i == dialogueObject.Dialogue.Length - 1 && dialogueObject.HasResponses) break; 
 
 
-            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
+            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         }
 
         if(dialogueObject.HasResponses)
@@ -54,9 +59,14 @@ public class DialogueUI : MonoBehaviour
 
     }
 
-    private void CloseDialogueBox()
+    public void CloseDialogueBox()
     {
         dialogueBox.SetActive(false);
         textLabel.text = string.Empty;
+    }
+
+    public void defeat(UnityEngine.Object t)
+    {
+        Destroy(t);
     }
 }
