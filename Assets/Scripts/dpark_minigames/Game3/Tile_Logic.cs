@@ -3,17 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Tile_Logic : MonoBehaviour
 {
     public List<Button> buttons;
     public List<Button> shuffledButtons;
     int counter;
+    int lives;
+    int score;
+    int cat;
+    private float timer = 10;
 
     // Start is called before the first frame update
     void Start()
     {
-          StartGame(); //Set the game
+        lives = PlayerPrefs.GetInt("lives");
+        score = PlayerPrefs.GetInt("score");
+        cat = PlayerPrefs.GetInt("cat");
+        StartGame(); //Set the game
     }
 
     public void StartGame(){
@@ -47,9 +55,38 @@ public class Tile_Logic : MonoBehaviour
                 button.image.color = Color.red;
                 //button.interactable = false;
             }
+            lives -= 1;
+            cat = 1;
+            PlayerPrefs.SetInt("lives", lives);
+            PlayerPrefs.SetInt("cat", cat);
+            yield return new WaitForSeconds(2f);
+            SceneManager.LoadScene("MainGame");
+        } else 
+        {
+            score += 5;  
+            cat = 2;
+            PlayerPrefs.SetInt("score", score);
+            PlayerPrefs.SetInt("cat", cat);
+            yield return new WaitForSeconds(2f);
+            SceneManager.LoadScene("MainGame");
         }
-        yield return new WaitForSeconds(2f);
-        StartGame();
+    }
+
+     void FixedUpdate()
+    {
+        if (timer > 0)
+        {
+            timer -= Time.fixedDeltaTime;
+
+            if (timer <= 0)
+            {
+                lives -= 1;
+                cat = 1;
+                PlayerPrefs.SetInt("lives", lives);
+                PlayerPrefs.SetInt("cat", cat);
+                SceneManager.LoadScene("MainGame");
+            }
+        }
     }
 
 }

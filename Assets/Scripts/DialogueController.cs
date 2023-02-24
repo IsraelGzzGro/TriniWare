@@ -31,7 +31,7 @@ public class DialogueController : MonoBehaviour
     [SerializeField] GameObject LeeAnne10;
     [SerializeField] GameObject LeeAnne11;
 
-
+    public Animator DialogueThemeFade;
 
     void Update()
     {
@@ -125,7 +125,7 @@ public class DialogueController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space) && counter == 12) 
         {
-            SceneManager.LoadScene("MainGame");
+            StartCoroutine(FadeMus());
         }
         if (Input.GetKeyUp(KeyCode.Space)) 
         {
@@ -133,4 +133,18 @@ public class DialogueController : MonoBehaviour
         }
 
     }
+
+    IEnumerator FadeMus() 
+   {
+     DialogueThemeFade.SetTrigger("FadeOUT");
+     yield return new WaitForSeconds(1.5f);
+     
+     if(SceneManager.GetActiveScene().name == "IntroScene") 
+        {
+             SceneManager.LoadScene("MainGame");
+        } else if (SceneManager.GetActiveScene().name == "OutroScene") 
+        {
+            SceneManager.LoadScene("GameOver");
+        }
+   }
 }

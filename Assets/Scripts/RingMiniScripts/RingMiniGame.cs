@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class RingMiniGame : MonoBehaviour
 {
-    public float endtimer = 8;
+    public float endtimer = 5;
     int check = 0;
     int lives;
     int score;
@@ -79,10 +79,10 @@ public class RingMiniGame : MonoBehaviour
                 }
             }
         }
-    }
+ }
     IEnumerator EndMini() {
         gameEnds();
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         if (outcome)
         {
             mainbg.sprite = winbg;
@@ -96,7 +96,7 @@ public class RingMiniGame : MonoBehaviour
     {
         if (check == 0) 
         {
-            endtimer = 4;
+            endtimer = 3;
             check += 1;
         }
     }

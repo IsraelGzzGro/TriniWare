@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MasherScript : MonoBehaviour
 {
+    int lives;
+    int score;
+    int cat;
+    private float endtimer = 20;
     public GameObject Heals;
     public GameObject[] Enemies;
     private GameObject enem;
@@ -36,6 +41,10 @@ public class MasherScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        lives = PlayerPrefs.GetInt("lives");
+        score = PlayerPrefs.GetInt("score");
+        cat = PlayerPrefs.GetInt("cat");
+
         int randEnemy = Random.Range(0, 9);
         Debug.Log(randEnemy);
         if(randEnemy <= 4){ //50% Easy Enemy
@@ -115,6 +124,8 @@ public class MasherScript : MonoBehaviour
             }
         } else { //Boss has died (Condition for minigame to end)
             if(cnt == 1){
+                StartCoroutine(EndMini());
+
                 alive = false;
                 GameObject e = Instantiate(explosion) as GameObject;
                 e.transform.position = center;
@@ -143,4 +154,31 @@ public class MasherScript : MonoBehaviour
         Color healthColor = Color.Lerp(Color.red, Color.green, health_percentage);
         healthBar.color = healthColor;
     }
+
+    IEnumerator EndMini() {
+        yield return new WaitForSeconds(2);
+        score += 5;
+        cat = 2;
+        PlayerPrefs.SetInt("score", score);
+        PlayerPrefs.SetInt("cat", cat);
+        SceneManager.LoadScene("MainGame");
+    }
+
+    void FixedUpdate() 
+    {
+        if (endtimer > 0)
+        {
+            endtimer -= Time.fixedDeltaTime;
+
+            if (endtimer <= 0)
+            {
+                lives -= 1;
+                cat = 1;
+                PlayerPrefs.SetInt("lives", lives);
+                PlayerPrefs.SetInt("cat", cat);
+                SceneManager.LoadScene("MainGame");
+                
+            }
+        }
+ }
 }

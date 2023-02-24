@@ -12,6 +12,10 @@ public class basketbehavior : MonoBehaviour
     public bool gameOn;
     public bool won;
 
+    public GameObject timerLong;
+    public GameObject timerMed;
+    public GameObject timerLil;
+
     int lives;
     int score;
     int cat;
@@ -20,13 +24,16 @@ public class basketbehavior : MonoBehaviour
     void Start()
     {
         if (findscript.findlength == 3) {
-            endtimer = 25f;
+            endtimer = 15f;
+            timerLong.SetActive(timerLong);
         }
         else if (findscript.findlength == 2) {
-            endtimer = 15f;
+            endtimer = 10f;
+            timerLong.SetActive(timerMed);
         }
         else {
-            endtimer = 8f;
+            endtimer = 5f;
+            timerLong.SetActive(timerLil);
         }
 
         gameOn = true;

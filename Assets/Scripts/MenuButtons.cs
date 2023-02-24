@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuButtons : MonoBehaviour
 {
@@ -11,6 +12,16 @@ public class MenuButtons : MonoBehaviour
    public GameObject howtplay;
    public GameObject htpwindow;
    public Animator anim;
+   public Text Hscore;
+   int highscore;
+
+   public Animator MainThemeFades;
+
+   void Start() 
+   {
+     highscore = PlayerPrefs.GetInt("highscore");
+     Hscore.text = "Highscore: " + highscore.ToString();
+   }
 
    public void playbtn() 
    {
@@ -27,10 +38,15 @@ public class MenuButtons : MonoBehaviour
         PlayerPrefs.SetInt("lives", 3);
         PlayerPrefs.SetInt("score", 0);
         PlayerPrefs.SetInt("cat", 0);
-        PlayerPrefs.SetInt("reset", 0);
+        //PlayerPrefs.SetInt("reset", 0);
+
+        PlayerPrefs.SetFloat("Timer",19.5f);
+        PlayerPrefs.SetInt("IntroAnim", 1);
 
         PlayerPrefs.SetInt("PlayingStory?", 0);
-        SceneManager.LoadScene("MainGame");
+        PlayerPrefs.SetInt("BeatStory", 0);
+        
+        StartCoroutine(FadeMusToGame());
 
    }
 
@@ -39,10 +55,28 @@ public class MenuButtons : MonoBehaviour
         PlayerPrefs.SetInt("lives", 3);
         PlayerPrefs.SetInt("score", 0);
         PlayerPrefs.SetInt("cat", 0);
-        PlayerPrefs.SetInt("reset", 0);
+        //PlayerPrefs.SetInt("reset", 0);
+
+        PlayerPrefs.SetFloat("Timer",19.5f);
+        PlayerPrefs.SetInt("IntroAnim", 1);
 
         PlayerPrefs.SetInt("PlayingStory?", 1);
-        SceneManager.LoadScene("IntroScene");
+        PlayerPrefs.SetInt("BeatStory", 0);
+        
+        StartCoroutine(FadeMusToIntro());
+   }
+
+   IEnumerator FadeMusToIntro() 
+   {
+     MainThemeFades.SetTrigger("FadeOUT");
+     yield return new WaitForSeconds(2);
+     SceneManager.LoadScene("IntroScene");
+   }
+   IEnumerator FadeMusToGame() 
+   {
+     MainThemeFades.SetTrigger("FadeOUT");
+     yield return new WaitForSeconds(2);
+     SceneManager.LoadScene("MainGame");
    }
    
    public void Restart()
@@ -70,6 +104,17 @@ public class MenuButtons : MonoBehaviour
 
    public void skipDialogue() 
    {
+     StartCoroutine(FadeMusGame());
+   }
+
+   IEnumerator FadeMusGame() 
+   {
+     MainThemeFades.SetTrigger("FadeOUT");
+     yield return new WaitForSeconds(1.5f);
      SceneManager.LoadScene("MainGame");
+   }
+   public void skipDialogue2() 
+   {
+     SceneManager.LoadScene("GameOver");
    }
 }

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PHGame2Script : MonoBehaviour
 {
-    private float timer = 6;
+    private float timer = 7;
     int lives;
     int score;
     int cat;
@@ -16,6 +16,8 @@ public class PHGame2Script : MonoBehaviour
     [SerializeField] GameObject word1;
     [SerializeField] GameObject word2;
     [SerializeField] GameObject word3;
+    [SerializeField] GameObject word4;
+    [SerializeField] GameObject word5;
     
 
     void Start() 
@@ -25,7 +27,7 @@ public class PHGame2Script : MonoBehaviour
         cat = PlayerPrefs.GetInt("cat");
         gt = GetComponent<Text>();
 
-        variation = Random.Range(1,4);
+        variation = Random.Range(1,6);
 
         if(variation == 1)
         {
@@ -38,6 +40,14 @@ public class PHGame2Script : MonoBehaviour
         if(variation == 3)
         {
             word3.SetActive(true);
+        }
+        if(variation == 4)
+        {
+            word4.SetActive(true);
+        }
+        if(variation == 5)
+        {
+            word5.SetActive(true);
         }
     }
     void Update() 
@@ -83,7 +93,7 @@ public class PHGame2Script : MonoBehaviour
             inp.text += 'm';
         } else if (Input.GetKeyDown(KeyCode.N))
         {
-            inp.text += 'm';
+            inp.text += 'n';
         } else if (Input.GetKeyDown(KeyCode.O))
         {
             inp.text += 'o';
@@ -120,7 +130,7 @@ public class PHGame2Script : MonoBehaviour
         } else if (Input.GetKeyDown(KeyCode.Z))
         {
             inp.text += 'z';
-        } else if (Input.GetKeyDown(KeyCode.Backspace))
+        } else if (Input.GetKeyDown(KeyCode.Backspace) && inp.text.Length > 0)
         {
             inp.text = inp.text.Substring(0, inp.text.Length-1);
         }
@@ -150,6 +160,20 @@ public class PHGame2Script : MonoBehaviour
                     PlayerPrefs.SetInt("cat", cat);
                     SceneManager.LoadScene("MainGame");
                 } else if(inp.text == "applejacks" && variation == 3) 
+                {
+                    score += 5;
+                    cat = 2;
+                    PlayerPrefs.SetInt("score", score);
+                    PlayerPrefs.SetInt("cat", cat);
+                    SceneManager.LoadScene("MainGame");
+                } else if(inp.text == "paddywhack" && variation == 4) 
+                {
+                    score += 5;
+                    cat = 2;
+                    PlayerPrefs.SetInt("score", score);
+                    PlayerPrefs.SetInt("cat", cat);
+                    SceneManager.LoadScene("MainGame");
+                } else if(inp.text == "chickenpox" && variation == 5) 
                 {
                     score += 5;
                     cat = 2;

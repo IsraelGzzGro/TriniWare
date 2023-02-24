@@ -42,6 +42,7 @@ public class ButtonsBehavior : MonoBehaviour
     int score;
     int cat;
     public float endtimer;
+    public GameObject[] Timers;
     //public int[] mousearr;
 
     // Start is called before the first frame update
@@ -63,18 +64,23 @@ public class ButtonsBehavior : MonoBehaviour
         switch (totalnum) {
             case 3:
                 endtimer = 18f; //8 seconds left to get 3 clicks
+                Timers[0].SetActive(true);
                 break;
             case 4:
                 endtimer = 22f; //10sec left to get 4 clicks
+                Timers[1].SetActive(true);
                 break;
             case 5:
                 endtimer = 28f; //14 sec left to get 5 clicks
+                Timers[2].SetActive(true);
                 break;
             case 6:
                 endtimer = 32f; //16 sec left to get 6 clicks
+                Timers[3].SetActive(true);
                 break;
             case 7:
                 endtimer = 38f; //22 sec to get 7 clicks
+                Timers[4].SetActive(true);
                 break;
         }
         //make list of buttons
